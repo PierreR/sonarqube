@@ -186,6 +186,24 @@ public class ComponentDao implements Dao {
     return mapper(session).countGhostProjects(parameters);
   }
 
+  /**
+   * Retrieves all components with a specific root project Uuid, no other filtering is done by this method.
+   *
+   * Used by Views plugin
+   */
+  public List<ComponentDto> selectByProjectUuid(String projectUuid, DbSession dbSession) {
+    return mapper(dbSession).selectByProjectUuid(projectUuid);
+  }
+
+  /**
+   * Retrieves all components with a specific customer measure, no other filtering is done by this method.
+   *
+   * Used by Views plugin
+   */
+  public List<ComponentDto> selectByCustomMeasure(String metricKey, String metricValue, DbSession dbSession) {
+    return mapper(dbSession).selectByCustomMeasure(metricKey, metricValue);
+  }
+
   private static void addPartialQueryParameterIfNotNull(Map<String, String> parameters, @Nullable String query) {
     if (query != null) {
       parameters.put("query", "%" + query.toUpperCase() + "%");

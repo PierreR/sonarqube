@@ -53,6 +53,10 @@ public interface ComponentMapper {
 
   List<ComponentDto> selectByUuids(@Param("uuids") Collection<String> uuids);
 
+  List<ComponentDto> selectByProjectUuid(@Param("projectUuid") String projectUuid);
+
+  List<ComponentDto> selectByCustomMeasure(@Param("metricKey") String metricKey, @Param("metricValue") String metricValue);
+
   List<String> selectExistingUuids(@Param("uuids") Collection<String> uuids);
 
   /**

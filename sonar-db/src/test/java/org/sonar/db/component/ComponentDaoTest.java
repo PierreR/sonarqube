@@ -492,6 +492,15 @@ public class ComponentDaoTest {
   }
 
   @Test
+  public void selectResourcesByRootId() {
+    db.prepareDbUnit(getClass(), "shared.xml");
+
+    List<ComponentDto> resources = underTest.selectByProjectUuid("ABCD", db.getSession());
+
+    assertThat(resources).extracting("id").containsOnly(1l, 2l, 3l, 4l);
+  }
+
+  @Test
   public void insert() {
     db.prepareDbUnit(getClass(), "empty.xml");
 
