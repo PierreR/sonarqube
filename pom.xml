@@ -687,11 +687,6 @@
       </dependency>
       <dependency>
         <groupId>org.codehaus.sonar</groupId>
-        <artifactId>sonar-ws-client</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.codehaus.sonar</groupId>
         <artifactId>sonar-views-bridge</artifactId>
         <version>${project.version}</version>
       </dependency>
