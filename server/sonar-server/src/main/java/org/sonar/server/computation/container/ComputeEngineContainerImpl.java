@@ -32,6 +32,7 @@ import org.picocontainer.behaviors.OptInCaching;
 import org.picocontainer.lifecycle.ReflectionLifecycleStrategy;
 import org.picocontainer.monitors.ComponentMonitorHelper;
 import org.picocontainer.monitors.NullComponentMonitor;
+import org.sonar.api.ce.measure.MeasureComputerProvider;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.core.issue.tracking.Tracker;
@@ -176,11 +177,13 @@ public class ComputeEngineContainerImpl extends ComponentContainer implements Co
     return Arrays.asList(
       new ComputationTempFolderProvider(),
 
-    ActivityManager.class,
+      ActivityManager.class,
 
-    MetricModule.class,
+      MetricModule.class,
 
-    // holders
+      MeasureComputerProvider.class,
+
+      // holders
       BatchReportDirectoryHolderImpl.class,
       TreeRootHolderImpl.class,
       PeriodsHolderImpl.class,
@@ -189,9 +192,9 @@ public class ComputeEngineContainerImpl extends ComponentContainer implements Co
       SqaleRatingSettings.class,
       ActiveRulesHolderImpl.class,
 
-    BatchReportReaderImpl.class,
+      BatchReportReaderImpl.class,
 
-    // repositories
+      // repositories
       LanguageRepositoryImpl.class,
       MeasureRepositoryImpl.class,
       EventRepositoryImpl.class,
@@ -200,10 +203,10 @@ public class ComputeEngineContainerImpl extends ComponentContainer implements Co
       QualityGateServiceImpl.class,
       EvaluationResultTextConverterImpl.class,
 
-    // new coverage measures
+      // new coverage measures
       NewCoverageMetricKeysModule.class,
 
-    // issues
+      // issues
       RuleCacheLoader.class,
       RuleRepositoryImpl.class,
       ScmAccountToUserLoader.class,
@@ -213,7 +216,7 @@ public class ComputeEngineContainerImpl extends ComponentContainer implements Co
       IssueVisitors.class,
       IssueLifecycle.class,
 
-    // common rules
+      // common rules
       CommonRuleEngineImpl.class,
       BranchCoverageRule.class,
       LineCoverageRule.class,
@@ -222,7 +225,7 @@ public class ComputeEngineContainerImpl extends ComponentContainer implements Co
       TestErrorRule.class,
       SkippedTestRule.class,
 
-    // order is important: DebtAggregator then NewDebtAggregator (new debt requires debt)
+      // order is important: DebtAggregator then NewDebtAggregator (new debt requires debt)
       DebtCalculator.class,
       DebtAggregator.class,
       NewDebtCalculator.class,
@@ -231,17 +234,17 @@ public class ComputeEngineContainerImpl extends ComponentContainer implements Co
       RuleTagsCopier.class,
       IssueCounter.class,
 
-    UpdateConflictResolver.class,
+      UpdateConflictResolver.class,
       TrackerBaseInputFactory.class,
       TrackerRawInputFactory.class,
       Tracker.class,
       TrackerExecution.class,
       BaseIssuesLoader.class,
 
-    // views
+      // views
       ViewIndex.class,
 
-    // ComputationService
+      // ComputationService
       ComputationService.class);
   }
 

@@ -54,6 +54,14 @@ public class MeasureComputerImpl implements MeasureComputer {
     return measureComputerImplementation;
   }
 
+  @Override
+  public String toString() {
+    return "MeasureComputerImpl{" +
+      "inputMetricKeys=" + inputMetricKeys +
+      ", outputMetrics=" + outputMetrics +
+      '}';
+  }
+
   public static class MeasureComputerBuilderImpl implements MeasureComputerBuilder {
 
     private String[] inputMetricKeys;
